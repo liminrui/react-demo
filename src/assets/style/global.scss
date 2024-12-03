@@ -1,0 +1,30 @@
+* {
+  cursor: default;
+}
+
+input {
+  cursor: text;
+}
+
+div,
+label {
+  user-select: none;
+}
+
+textarea {
+  border-radius: 0;
+  background-color: transparent;
+  flex: 1;
+  border: none;
+  caret-color: white;
+  color: white;
+  resize: none;
+  &:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+div {
+  box-sizing: border-box;
+}

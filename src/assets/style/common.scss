@@ -1,0 +1,185 @@
+@use './variable.scss' as *;
+
+@mixin row($align: $center, $justify: $center) {
+  display: flex;
+  flex-flow: row;
+  align-items: $align;
+  justify-content: $justify;
+  flex-wrap: wrap;
+}
+
+@mixin col($align: $center, $justify: $center) {
+  display: flex;
+  flex-direction: column;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin grid($split: 3, $scale, $rowGap: 20px, $colGap: 20px) {
+  display: grid;
+  @if $split == 3 {
+    grid-template-columns: repeat($split, 33%);
+  } @else {
+    grid-template-columns: repeat($split, calc(100% / $split));
+  }
+
+  grid-row-gap: $rowGap * $scale;
+  grid-column-gap: $colGap * $scale;
+  overflow: auto;
+}
+
+@mixin ellipsis {
+  // 文本溢出显示省略号
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@mixin scrollbar($scale, $show: block, $width: 10px) {
+  /* 设置滚动条的样式 */
+  &::-webkit-scrollbar {
+    display: $show;
+    width: $width * $scale;
+    // height: 10px * $scale !important;
+    cursor: pointer;
+  }
+  /* 滚动槽 */
+  &::-webkit-scrollbar-track {
+    border-radius: 10px * $scale;
+  }
+  /* 滚动条滑块 */
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px * $scale;
+    background: rgba(192, 193, 193, 0.3);
+    opacity: 0.3;
+  }
+  &::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+}
+
+@mixin size($size: 52px, $scale) {
+  width: $size * $scale;
+  height: $size * $scale;
+}
+
+@mixin split($height, $scale) {
+  width: 1px;
+  height: $height * $scale;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.1)
+  );
+}
+
+@mixin text($scale, $size: 36px) {
+  font-family:
+    PingFang SC,
+    PingFang SC;
+  font-weight: 400;
+  font-size: $size * $scale;
+  color: #ffffff;
+  line-height: 42px * $scale;
+}
+
+@mixin title($scale) {
+  font-family:
+    SF Pro,
+    SF Pro;
+  font-weight: 600;
+  font-size: 40px * $scale;
+  color: #ffffff;
+  line-height: 50px * $scale;
+}
+
+@mixin blur($color: rgba(#131326, 0.7), $size: 6px) {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $color;
+    backdrop-filter: blur($size);
+    opacity: 1;
+    border-radius: inherit;
+  }
+}
+
+@mixin btnStyle($scale, $bg: #272728, $w: 400px, $h: 96px, $fontSize: 42px, $fontColor: white) {
+  width: $w * $scale;
+  height: $h * $scale;
+  background: $bg;
+  border-radius: 12px * $scale;
+  line-height: $h * $scale;
+  text-align: center;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
+
+  font-family:
+    PingFang HK,
+    PingFang HK;
+  font-weight: 400;
+  font-size: $fontSize * $scale;
+  color: $fontColor;
+}
+
+@mixin hover() {
+  &:hover {
+    cursor: pointer;
+    opacity: 0.9;
+  }
+}
+
+@mixin border-linear() {
+  border: 1px solid transparent;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  background-image: linear-gradient(to right, rgba(47, 60, 80, 0.6), rgba(47, 60, 80, 0.6)),
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.4),
+      transparent 30%,
+      transparent 80%,
+      rgba(255, 255, 255, 0.1)
+    );
+}
+
+@mixin avator($scale) {
+  width: 132px * $scale;
+  height: 132px * $scale;
+  background: #0a84ff;
+  border-radius: 66px * $scale;
+  @include col();
+
+  font-family:
+    PingFang SC,
+    PingFang SC;
+  font-weight: 500;
+  font-size: 40px * $scale;
+  color: #ffffff;
+
+  margin-left: 84px * $scale;
+}
+
+@mixin label($fontSize, $fontWeight: 400) {
+  font-family:
+    PingFang SC,
+    PingFang SC;
+  font-weight: $fontWeight;
+  font-size: $fontSize;
+  color: #ffffff;
+}
+
+@mixin fullscreen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}

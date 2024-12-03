@@ -2,7 +2,9 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import { useImmer } from 'use-immer'
-import './App.css'
+import './App.scss'
+import TaskApp from './components/task/task'
+
 
 function Test() {
   const name = 'li'
@@ -38,8 +40,9 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <Test></Test>
+      <TaskApp></TaskApp>
     </>
-    // <Test></Test>
   )
 }
 
