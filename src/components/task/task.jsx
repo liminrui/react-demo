@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useState } from 'react';
 import { tasksReducer } from '../../reducer/task';
 import './task.scss'
 
@@ -13,12 +13,16 @@ const initialTasks = [
 export default function TaskApp() {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 
+  const [text, setText] = useState('')
+
   function handleAddTask(text) {
     dispatch({
       type: 'added',
       id: nextId++,
       text: text,
     });
+
+    setText('')
   }
 
   function handleChangeTask(task) {
@@ -35,14 +39,55 @@ export default function TaskApp() {
     });
   }
 
+  function inputChange(e) {
+    setText(e.target.value)
+  }
+
   return (
     <>
       <h1>布拉格的行程安排</h1>
       <div className="row">
-        <input type="text" />
-        <button>新增</button>
+        <input type="text" value={text} onChange={inputChange}/>
+        <button onClick={() => handleAddTask(text)}>新增</button>
       </div>
+      {
+        tasks.map((item, index) => (
+          <Row item={item} key={index} onDelete={(item) => handleDeleteTask(item.id)} onSave={task => handleChangeTask(task)}></Row>
+        ))
+      }
     </>
+  );
+}
+
+function Row({item, onDelete, onSave}) {
+  const [text, setText] = useState(item.text)
+  const [editing, setEditing] = useState(false)
+
+  function save() {
+    onSave(text)
+    setEditing(false)
+    return {
+      ...item,
+      text
+    }
+  }
+  return (
+    <div className="row">
+      {
+        editing ? (
+          <>
+            <input value={text} onChange={e => setText(e.target.value)}></input>
+            <button onClick={save}>保存</button>
+          </>
+        ) : (
+          <>
+            <label htmlFor="">{text}</label>
+            <button onClick={() => setEditing(true)}>编辑</button>
+          </>
+        )
+      }
+      <button onClick={() => onDelete(item)}>删除</button>
+    </div>
   );
 }
 
