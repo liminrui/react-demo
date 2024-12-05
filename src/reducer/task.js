@@ -1,14 +1,20 @@
 export function tasksReducer(tasks, action) {
   switch (action.type) {
     case "added": {
-      return [
-        ...tasks,
-        {
-          id: action.id,
-          text: action.text,
-          done: false,
-        },
-      ];
+      // return [
+      //   ...tasks,
+      //   {
+      //     id: action.id,
+      //     text: action.text,
+      //     done: false,
+      //   },
+      // ];
+      tasks.push({
+        id: action.id,
+        text: action.text,
+        done: false,
+      });
+      break;
     }
     case "changed": {
       return tasks.map((t) => {

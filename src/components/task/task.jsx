@@ -1,5 +1,6 @@
 import { useReducer, useState } from 'react';
 import { tasksReducer } from '../../reducer/task';
+import { useImmerReducer } from 'use-immer';
 import './task.scss'
 
 let nextId = 3;
@@ -11,7 +12,7 @@ const initialTasks = [
 
 
 export default function TaskApp() {
-  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
+  const [tasks, dispatch] = useImmerReducer(tasksReducer, initialTasks);
 
   const [text, setText] = useState('')
 
@@ -64,12 +65,12 @@ function Row({item, onDelete, onSave}) {
   const [editing, setEditing] = useState(false)
 
   function save() {
-    onSave(text)
-    setEditing(false)
-    return {
+    onSave({
       ...item,
       text
-    }
+    })
+    setEditing(false)
+     
   }
   return (
     <div className="row">
