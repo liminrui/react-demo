@@ -3,7 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import { useImmer } from "use-immer";
 import "./App.scss";
-import TaskApp from "./components/task/task";
+import TaskApp from "./components/task/task2";
 import Page from "./components/head";
 
 function App() {
