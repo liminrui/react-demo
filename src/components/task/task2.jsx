@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useTask } from "../../store/task";
 import { TaskProvider } from "./taskProvider";
 
@@ -15,6 +15,7 @@ function Head() {
   const dispatch = useDispatch();
 
   const [text, setText] = useState("");
+  const inputRef = useRef(null);
 
   return (
     <>
@@ -22,8 +23,10 @@ function Head() {
         <input
           type="text"
           value={text}
+          ref={inputRef}
           onChange={(e) => setText(e.target.value)}
         />
+        <button onClick={() => inputRef.current.focus()}>聚焦</button>
         <button
           onClick={() =>
             dispatch({
