@@ -6,6 +6,7 @@ import "./App.scss";
 import TaskApp from "./components/task/task2";
 import Page from "./components/head";
 import CatFriends from "./components/cat";
+import RefCom from "./components/ref";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -19,6 +20,7 @@ function App() {
       <Page></Page>
       <TaskApp></TaskApp>
       <CatFriends></CatFriends>
+      <RefCom></RefCom>
     </>
   );
 }

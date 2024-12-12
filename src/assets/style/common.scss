@@ -1,4 +1,4 @@
-@use './variable.scss' as *;
+@use "./variable.scss" as *;
 
 @mixin row($align: $center, $justify: $center) {
   display: flex;
@@ -75,9 +75,7 @@
 }
 
 @mixin text($scale, $size: 36px) {
-  font-family:
-    PingFang SC,
-    PingFang SC;
+  font-family: PingFang SC, PingFang SC;
   font-weight: 400;
   font-size: $size * $scale;
   color: #ffffff;
@@ -85,9 +83,7 @@
 }
 
 @mixin title($scale) {
-  font-family:
-    SF Pro,
-    SF Pro;
+  font-family: SF Pro, SF Pro;
   font-weight: 600;
   font-size: 40px * $scale;
   color: #ffffff;
@@ -96,7 +92,7 @@
 
 @mixin blur($color: rgba(#131326, 0.7), $size: 6px) {
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -109,7 +105,14 @@
   }
 }
 
-@mixin btnStyle($scale, $bg: #272728, $w: 400px, $h: 96px, $fontSize: 42px, $fontColor: white) {
+@mixin btnStyle(
+  $scale,
+  $bg: #272728,
+  $w: 400px,
+  $h: 96px,
+  $fontSize: 42px,
+  $fontColor: white
+) {
   width: $w * $scale;
   height: $h * $scale;
   background: $bg;
@@ -121,9 +124,7 @@
     opacity: 0.7;
   }
 
-  font-family:
-    PingFang HK,
-    PingFang HK;
+  font-family: PingFang HK, PingFang HK;
   font-weight: 400;
   font-size: $fontSize * $scale;
   color: $fontColor;
@@ -140,7 +141,11 @@
   border: 1px solid transparent;
   background-clip: padding-box, border-box;
   background-origin: padding-box, border-box;
-  background-image: linear-gradient(to right, rgba(47, 60, 80, 0.6), rgba(47, 60, 80, 0.6)),
+  background-image: linear-gradient(
+      to right,
+      rgba(47, 60, 80, 0.6),
+      rgba(47, 60, 80, 0.6)
+    ),
     linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0.4),
@@ -157,9 +162,7 @@
   border-radius: 66px * $scale;
   @include col();
 
-  font-family:
-    PingFang SC,
-    PingFang SC;
+  font-family: PingFang SC, PingFang SC;
   font-weight: 500;
   font-size: 40px * $scale;
   color: #ffffff;
@@ -168,9 +171,7 @@
 }
 
 @mixin label($fontSize, $fontWeight: 400) {
-  font-family:
-    PingFang SC,
-    PingFang SC;
+  font-family: PingFang SC, PingFang SC;
   font-weight: $fontWeight;
   font-size: $fontSize;
   color: #ffffff;
