@@ -7,6 +7,7 @@ import TaskApp from "./components/task/task2";
 import Page from "./components/head";
 import CatFriends from "./components/cat";
 import RefCom from "./components/ref";
+import TodoList from "./components/todolist";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,10 +18,11 @@ function App() {
 
   return (
     <>
-      <Page></Page>
+      {/* <Page></Page>
       <TaskApp></TaskApp>
       <CatFriends></CatFriends>
-      <RefCom></RefCom>
+      <RefCom></RefCom> */}
+      <TodoList></TodoList>
     </>
   );
 }
