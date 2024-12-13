@@ -8,6 +8,7 @@ import Page from "./components/head";
 import CatFriends from "./components/cat";
 import RefCom from "./components/ref";
 import TodoList from "./components/todolist";
+import Player from "./components/vedio";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -23,6 +24,7 @@ function App() {
       <CatFriends></CatFriends>
       <RefCom></RefCom> */}
       <TodoList></TodoList>
+      <Player></Player>
     </>
   );
 }
